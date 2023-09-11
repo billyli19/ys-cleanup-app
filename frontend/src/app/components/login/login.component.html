@@ -1,13 +1,18 @@
-<h1>YS Community <span>Cleanup</span></h1>
-
-<img src="./../../../assets/images/Volunteering-amico.png" />
-
-<button class="btn-filled">
-  <a routerLink="register">Register</a>
-</button>
-
-<button class="btn-outlined">
-  <a routerLink="signin">Sign in</a>
-</button>
-
 <router-outlet></router-outlet>
+<div class="container">
+  <h1 class="title">YS Community <span>Cleanup</span></h1>
+
+  <div class="img-container">
+    <img src="./../../../assets/images/Volunteering-amico.png" />
+  </div>
+
+  <div class="btn-container">
+    <button mat-flat-button class="btn-filled">
+      <a id="white-text" routerLink="register">Register</a>
+    </button>
+
+    <button class="btn-outlined">
+      <a id="green-text" routerLink="signin">Sign in</a>
+    </button>
+  </div>
+</div>

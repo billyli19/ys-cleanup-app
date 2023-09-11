@@ -1,14 +1,4 @@
 import { Component } from '@angular/core';
-import {MatFormFieldModule} from '@angular/material/form-field';
-
-@NgModule({
-  imports: [
-    MatFormFieldModule
-  ],
-  exports: [
-    MatFormFieldModule
-  ]
-})
 
 @Component({
   selector: 'app-register',
@@ -16,5 +6,18 @@ import {MatFormFieldModule} from '@angular/material/form-field';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  organisation: string;
 
+  onSubmit() {
+    console.log('Registration form submitted!');
+    console.log(`Name: ${this.name}`);
+    console.log(`Email: ${this.email}`);
+    console.log(`Password: ${this.password}`);
+    console.log(`Confirm Password: ${this.confirmPassword}`);
+    console.log(`Organisation: ${this.organisation}`);
+  }
 }

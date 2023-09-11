@@ -4,18 +4,42 @@
 
 <h1>Create a new account</h1>
 
-<mat-form-field>
-  <mat-label>Input</mat-label>
-  <input matInput />
-</mat-form-field>
-<mat-form-field>
-  <mat-label>Select</mat-label>
-  <mat-select>
-    <mat-option value="one">First option</mat-option>
-    <mat-option value="two">Second option</mat-option>
-  </mat-select>
-</mat-form-field>
-<mat-form-field>
-  <mat-label>Textarea</mat-label>
-  <textarea matInput></textarea>
-</mat-form-field>
+<form (ngSubmit)="onSubmit()">
+  <label>
+    Name: <input type="text" [(ngModel)]="name" name="name" required />
+  </label>
+  <br />
+  <label>
+    Email: <input type="email" [(ngModel)]="email" name="email" required />
+  </label>
+  <br />
+  <label>
+    Password:
+    <input type="password" [(ngModel)]="password" name="password" required />
+  </label>
+  <br />
+  <label>
+    Confirm Password:
+    <input
+      type="password"
+      [(ngModel)]="confirmPassword"
+      name="confirmPassword"
+      required
+    />
+  </label>
+  <br />
+  <label>
+    Organisation:
+    <input
+      type="text"
+      [(ngModel)]="organisation"
+      name="organisation"
+      required
+    />
+  </label>
+  <br />
+  <button type="submit">Create account</button>
+</form>
+
+<p>Already have an account?</p>
+<a routerLink="./../signin">sign in</a>
