@@ -1,45 +1,109 @@
-<button class="btn-circle">
-  <span class="material-symbols-outlined" routerLink=""> arrow_back </span>
-</button>
+<div class="container">
+  <button class="btn-circle">
+    <span class="material-symbols-outlined" routerLink=""> arrow_back </span>
+  </button>
 
-<h1>Create a new account</h1>
+  <h1 class="title">Create a new account</h1>
 
-<form (ngSubmit)="onSubmit()">
-  <label>
-    Name: <input type="text" [(ngModel)]="name" name="name" required />
-  </label>
-  <br />
-  <label>
-    Email: <input type="email" [(ngModel)]="email" name="email" required />
-  </label>
-  <br />
-  <label>
-    Password:
-    <input type="password" [(ngModel)]="password" name="password" required />
-  </label>
-  <br />
-  <label>
-    Confirm Password:
-    <input
-      type="password"
-      [(ngModel)]="confirmPassword"
-      name="confirmPassword"
-      required
-    />
-  </label>
-  <br />
-  <label>
-    Organisation:
-    <input
-      type="text"
-      [(ngModel)]="organisation"
-      name="organisation"
-      required
-    />
-  </label>
-  <br />
-  <button type="submit">Create account</button>
-</form>
+  <form>
+    <div class="form-group">
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput required placeholder="Name" />
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          placeholder="pat@example.com"
+          [formControl]="email"
+          required
+        />
+        <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field>
+        <mat-label>Confirm Password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field>
+        <mat-label>Organisation</mat-label>
+        <mat-select [formControl]="organisation">
+          <mat-option value="primary">Sogeti NL</mat-option>
+          <mat-option value="primary">Bayer</mat-option>
+          <mat-option value="primary">Belastingdienst</mat-option>
+          <mat-option value="primary">ABN AMRO</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </form>
 
-<p>Already have an account?</p>
-<a routerLink="./../signin">sign in</a>
+  <!-- <form (ngSubmit)="onSubmit()">
+    <label>
+      Name: <input type="text" [(ngModel)]="name" name="name" required />
+    </label>
+    <br />
+    <label>
+      Email: <input type="email" [(ngModel)]="email" name="email" required />
+    </label>
+    <br />
+    <label>
+      Password:
+      <input type="password" [(ngModel)]="password" name="password" required />
+    </label>
+    <br />
+    <label>
+      Confirm Password:
+      <input
+        type="password"
+        [(ngModel)]="confirmPassword"
+        name="confirmPassword"
+        required
+      />
+    </label>
+    <br />
+    <label>
+      Organisation:
+      <input
+        type="text"
+        [(ngModel)]="organisation"
+        name="organisation"
+        required
+      />
+    </label>
+    <br />
+    <button type="submit">Create account</button>
+  </form> -->
+
+  <p>Already have an account?</p>
+  <a routerLink="./../signin">sign in</a>
+</div>
