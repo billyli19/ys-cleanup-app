@@ -1,31 +1,45 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.css']
 })
-export class SigninComponent {
+export class SigninComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder){}
+  signinForm!: FormGroup;
+  hide = true;
+  returnUrl = '';
 
-  public signinFormGroup: FormGroup = this.signinForm();
+  constructor(private formBuilder: FormBuilder, 
+    private userService:UserService,
+    private activatedRoute: ActivatedRoute, 
+    private router:Router
+  ) { }
 
-  private signinForm(): FormGroup {
-    return this.formBuilder.group({
-      email : new FormControl('', Validators.required),
+  ngOnInit(): void {
+    this.signinForm = this.formBuilder.group({
+      email : new FormControl('', [Validators.required, Validators.email]),
       password : new FormControl('', Validators.required),
     })
+
+    this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'];
+    this.router.navigateByUrl(this.returnUrl);
   }
 
-  hide = true;
-
-  getErrorMessage(){
-
+  get formControls(){
+    return this.signinForm.controls;
   }
 
   onSubmit() {
-    console.log(this.signinFormGroup.value);
+    console.log(this.signinForm.value);
+    this.userService.login({email:this.formControls['email'].value, 
+      password:this.formControls['password'].value}).subscribe(() => {
+        this.router.navigateByUrl(this.returnUrl);
+      }
+    );
   }
 }

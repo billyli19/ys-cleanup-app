@@ -1,5 +1,5 @@
-import { Organisation } from './organisation';
-import { Leaderboard } from './leaderboard';
+import { Leaderboard } from "./leaderboard";
+import { Organisation } from "./organisation";
 
 export class User {
     id!: number;

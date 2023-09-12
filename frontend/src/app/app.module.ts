@@ -16,6 +16,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSelectModule } from '@angular/material/select';
 import { NotfoundComponent } from './components/notfound/notfound.component';
+import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +26,14 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
     LoginComponent,
     RegisterComponent,
     SigninComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     FormsModule,
     MatButtonModule,
     MatIconModule,
@@ -36,7 +41,12 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
     MatInputModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
-    MatSelectModule
+    MatSelectModule,
+    ToastrModule.forRoot({
+      timeOut:3000,
+      positionClass:"toast-bottom-right",
+      newestOnTop:false
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

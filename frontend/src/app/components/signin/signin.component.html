@@ -9,7 +9,7 @@
     <img src="./../../../assets/images/Happy Earth-amico.png" />
   </div>
 
-  <form [formGroup]="signinFormGroup" (ngSubmit)="onSubmit()">
+  <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <mat-form-field appearance="outline" class="inputField">
         <mat-label>Email</mat-label>
@@ -44,7 +44,7 @@
         mat-flat-button
         class="btn-filled"
         type="submit"
-        [disabled]="!signinFormGroup.valid"
+        [disabled]="!signinForm.valid"
       >
         Sign In
       </button>
