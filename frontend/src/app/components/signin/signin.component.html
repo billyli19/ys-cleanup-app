@@ -9,23 +9,25 @@
     <img src="./../../../assets/images/Happy Earth-amico.png" />
   </div>
 
-  <form (ngSubmit)="onSubmit()">
+  <form [formGroup]="signinFormGroup" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <mat-form-field appearance="outline" class="inputField">
         <mat-label>Email</mat-label>
         <input
           matInput
           placeholder="example@email.com"
-          [formControl]="email"
-          required
+          formControlName="email"
         />
-        <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
       </mat-form-field>
     </div>
     <div class="form-group">
       <mat-form-field appearance="outline" class="inputField">
         <mat-label>Password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" required />
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          formControlName="password"
+        />
         <button
           mat-icon-button
           matSuffix
@@ -38,7 +40,14 @@
       </mat-form-field>
     </div>
     <div class="btn-container">
-      <button mat-flat-button class="btn-filled" type="submit">Sign In</button>
+      <button
+        mat-flat-button
+        class="btn-filled"
+        type="submit"
+        [disabled]="!signinFormGroup.valid"
+      >
+        Sign In
+      </button>
     </div>
   </form>
 

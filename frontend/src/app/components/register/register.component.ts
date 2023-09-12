@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -8,24 +8,33 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class RegisterComponent {
 
-  name = new FormControl('');
-  email = new FormControl('');
-  password = new FormControl('');
-  confirmPassword = new FormControl('');
-  organisation = new FormControl('');
+  constructor(private formBuilder: FormBuilder) {}
+
+  public registerFormGroup: FormGroup = this.registerForm();
+
+  private registerForm(): FormGroup {
+    return this.formBuilder.group({
+      name : new FormControl('', Validators.required),
+      email : new FormControl('', [Validators.email, Validators.required]),
+      password : new FormControl('', Validators.required),
+      confirmPassword : new FormControl('', Validators.required),
+      organisation : new FormControl('', Validators.required),
+    })
+  }
+
+  passwordsMatch(): boolean {
+    const password = this.registerFormGroup.get('password')?.value;
+    const confirmPassword = this.registerFormGroup.get('confirmPassword')?.value;
+    return password === confirmPassword;
+  }
 
   hide = true;
 
-  getErrorMessage(){
-
-  }
+  // getErrorMessage(){
+  //   console.log('this is an error');
+  // }
 
   onSubmit() {
-    console.log('Registration form submitted!');
-    console.log(`Name: ${this.name}`);
-    console.log(`Email: ${this.email}`);
-    console.log(`Password: ${this.password}`);
-    console.log(`Confirm Password: ${this.confirmPassword}`);
-    console.log(`Organisation: ${this.organisation}`);
+    console.log(this.registerFormGroup.value);
   }
 }

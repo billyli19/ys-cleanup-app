@@ -45,7 +45,20 @@ mat-form-field {
   border-bottom-right-radius: 0.5rem !important;
 }
 
-.btn-container .btn-filled {
+.btn-container .btn-filled:disabled {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  border-radius: 2rem;
+  border: none;
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 1.3rem;
+  color: #ffffff;
+  margin-top: 4.5rem;
+}
+
+.btn-container .btn-filled:enabled {
   width: 100%;
   height: 100%;
   padding: 1rem;

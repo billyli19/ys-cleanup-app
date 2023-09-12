@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signin',
@@ -7,8 +7,17 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent {
-  email = new FormControl('');
-  password = new FormControl('');
+
+  constructor(private formBuilder: FormBuilder){}
+
+  public signinFormGroup: FormGroup = this.signinForm();
+
+  private signinForm(): FormGroup {
+    return this.formBuilder.group({
+      email : new FormControl('', Validators.required),
+      password : new FormControl('', Validators.required),
+    })
+  }
 
   hide = true;
 
@@ -17,8 +26,6 @@ export class SigninComponent {
   }
 
   onSubmit() {
-    console.log('Sign-in form submitted!');
-    console.log(`Email: ${this.email}`);
-    console.log(`Password: ${this.password}`);
+    console.log(this.signinFormGroup.value);
   }
 }

@@ -5,11 +5,11 @@
 
   <h1 class="title">Create a new account</h1>
 
-  <form (ngSubmit)="onSubmit()">
+  <form [formGroup]="registerFormGroup" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <mat-form-field appearance="outline" class="inputField">
         <mat-label>Name</mat-label>
-        <input matInput placeholder="Name" required />
+        <input matInput placeholder="Name" formControlName="name" />
       </mat-form-field>
     </div>
     <div class="form-group">
@@ -18,16 +18,21 @@
         <input
           matInput
           placeholder="example@email.com"
-          [formControl]="email"
-          required
+          formControlName="email"
         />
-        <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+        <!-- <mat-error *ngIf="!registerFormGroup.controls['email'].valid">{{
+          getErrorMessage()
+        }}</mat-error> -->
       </mat-form-field>
     </div>
     <div class="form-group">
       <mat-form-field appearance="outline" class="inputField">
         <mat-label>Password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" required />
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          formControlName="password"
+        />
         <button
           mat-icon-button
           matSuffix
@@ -42,7 +47,11 @@
     <div class="form-group">
       <mat-form-field appearance="outline" class="inputField">
         <mat-label>Confirm Password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" required />
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          formControlName="confirmPassword"
+        />
         <button
           mat-icon-button
           matSuffix
@@ -57,7 +66,7 @@
     <div class="form-group">
       <mat-form-field appearance="outline" class="inputField">
         <mat-label>Organisation</mat-label>
-        <mat-select [formControl]="organisation" required>
+        <mat-select formControlName="organisation">
           <mat-option value="primary">Sogeti NL</mat-option>
           <mat-option value="primary">Bayer</mat-option>
           <mat-option value="primary">ABN AMRO</mat-option>
@@ -65,7 +74,12 @@
       </mat-form-field>
     </div>
     <div class="btn-container">
-      <button mat-flat-button class="btn-filled" type="submit">
+      <button
+        mat-flat-button
+        class="btn-filled"
+        type="submit"
+        [disabled]="!registerFormGroup.valid"
+      >
         Create account
       </button>
     </div>
