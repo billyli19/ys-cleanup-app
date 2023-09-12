@@ -5,19 +5,19 @@
 
   <h1 class="title">Create a new account</h1>
 
-  <form>
+  <form (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="outline" class="inputField">
         <mat-label>Name</mat-label>
-        <input matInput required placeholder="Name" />
+        <input matInput placeholder="Name" required />
       </mat-form-field>
     </div>
     <div class="form-group">
-      <mat-form-field>
+      <mat-form-field appearance="outline" class="inputField">
         <mat-label>Email</mat-label>
         <input
           matInput
-          placeholder="pat@example.com"
+          placeholder="example@email.com"
           [formControl]="email"
           required
         />
@@ -25,9 +25,9 @@
       </mat-form-field>
     </div>
     <div class="form-group">
-      <mat-form-field>
+      <mat-form-field appearance="outline" class="inputField">
         <mat-label>Password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" />
+        <input matInput [type]="hide ? 'password' : 'text'" required />
         <button
           mat-icon-button
           matSuffix
@@ -40,9 +40,9 @@
       </mat-form-field>
     </div>
     <div class="form-group">
-      <mat-form-field>
+      <mat-form-field appearance="outline" class="inputField">
         <mat-label>Confirm Password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" />
+        <input matInput [type]="hide ? 'password' : 'text'" required />
         <button
           mat-icon-button
           matSuffix
@@ -55,55 +55,19 @@
       </mat-form-field>
     </div>
     <div class="form-group">
-      <mat-form-field>
+      <mat-form-field appearance="outline" class="inputField">
         <mat-label>Organisation</mat-label>
-        <mat-select [formControl]="organisation">
+        <mat-select [formControl]="organisation" required>
           <mat-option value="primary">Sogeti NL</mat-option>
           <mat-option value="primary">Bayer</mat-option>
-          <mat-option value="primary">Belastingdienst</mat-option>
           <mat-option value="primary">ABN AMRO</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
+    <button mat-button class="btn-filled" type="submit">Create account</button>
   </form>
 
-  <!-- <form (ngSubmit)="onSubmit()">
-    <label>
-      Name: <input type="text" [(ngModel)]="name" name="name" required />
-    </label>
-    <br />
-    <label>
-      Email: <input type="email" [(ngModel)]="email" name="email" required />
-    </label>
-    <br />
-    <label>
-      Password:
-      <input type="password" [(ngModel)]="password" name="password" required />
-    </label>
-    <br />
-    <label>
-      Confirm Password:
-      <input
-        type="password"
-        [(ngModel)]="confirmPassword"
-        name="confirmPassword"
-        required
-      />
-    </label>
-    <br />
-    <label>
-      Organisation:
-      <input
-        type="text"
-        [(ngModel)]="organisation"
-        name="organisation"
-        required
-      />
-    </label>
-    <br />
-    <button type="submit">Create account</button>
-  </form> -->
-
-  <p>Already have an account?</p>
-  <a routerLink="./../signin">sign in</a>
+  <p class="custom-p">
+    Already have an account? <a routerLink="./../signin">Sign in</a>
+  </p>
 </div>

@@ -7,11 +7,6 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  // name: string;
-  // email: string;
-  // password: string;
-  // confirmPassword: string;
-  // organisation: string;
 
   name = new FormControl('');
   email = new FormControl('');
@@ -25,12 +20,12 @@ export class RegisterComponent {
 
   }
 
-  // onSubmit() {
-  //   console.log('Registration form submitted!');
-  //   console.log(`Name: ${this.name}`);
-  //   console.log(`Email: ${this.email}`);
-  //   console.log(`Password: ${this.password}`);
-  //   console.log(`Confirm Password: ${this.confirmPassword}`);
-  //   console.log(`Organisation: ${this.organisation}`);
-  // }
+  onSubmit() {
+    console.log('Registration form submitted!');
+    console.log(`Name: ${this.name}`);
+    console.log(`Email: ${this.email}`);
+    console.log(`Password: ${this.password}`);
+    console.log(`Confirm Password: ${this.confirmPassword}`);
+    console.log(`Organisation: ${this.organisation}`);
+  }
 }
