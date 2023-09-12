@@ -1,1 +1,48 @@
-<p>signin works!</p>
+<div class="container">
+  <button class="btn-circle">
+    <span class="material-symbols-outlined" routerLink=""> arrow_back </span>
+  </button>
+
+  <h1 class="title">Hi, Welcome back!</h1>
+
+  <div class="img-container">
+    <img src="./../../../assets/images/Happy Earth-amico.png" />
+  </div>
+
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <mat-form-field appearance="outline" class="inputField">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          placeholder="example@email.com"
+          [formControl]="email"
+          required
+        />
+        <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field appearance="outline" class="inputField">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" required />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+    <div class="btn-container">
+      <button mat-flat-button class="btn-filled" type="submit">Sign In</button>
+    </div>
+  </form>
+
+  <p class="custom-p">
+    Don't have an account yet? <a routerLink="./../register">Register</a>
+  </p>
+</div>
