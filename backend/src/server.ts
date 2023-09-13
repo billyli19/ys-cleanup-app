@@ -12,11 +12,7 @@ app.use(cors({
     origin:["http://localhost:4200"]
 }));
 
-app.get("/api/register", (req, res) => {
-    res.send('hello, world!')
-})
-
-app.post("/api/users/login", (req, res) => {
+app.post("/api/users/signin", (req, res) => {
     const { email, password } = req.body;
     const user = sample_users.find(user => 
         user.email === email &&

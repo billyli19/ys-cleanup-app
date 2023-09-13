@@ -14,7 +14,8 @@ export class SigninComponent implements OnInit {
   hide = true;
   returnUrl = '';
 
-  constructor(private formBuilder: FormBuilder, 
+  constructor(
+    private formBuilder: FormBuilder, 
     private userService:UserService,
     private activatedRoute: ActivatedRoute, 
     private router:Router
@@ -26,8 +27,9 @@ export class SigninComponent implements OnInit {
       password : new FormControl('', Validators.required),
     })
 
-    this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'];
-    this.router.navigateByUrl(this.returnUrl);
+    // this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'];
+    // this.router.navigateByUrl(this.returnUrl);
+    // console.log('returnUrl:' + this.returnUrl);
   }
 
   get formControls(){
@@ -41,5 +43,7 @@ export class SigninComponent implements OnInit {
         this.router.navigateByUrl(this.returnUrl);
       }
     );
+    // alert(`email: ${this.formControls['email'].value},
+    // password:${this.formControls['password'].value}`);
   }
 }
