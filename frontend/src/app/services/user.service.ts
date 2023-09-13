@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable, tap } from "rxjs";
-import { User } from "../shared/models/User";
 import { IUserLogin } from "../shared/interfaces/IUser";
 import { HttpClient } from "@angular/common/http";
 import { USER_LOGIN_URL } from "../shared/constants/Api";
 import { ToastrService } from "ngx-toastr";
+import { User } from "../shared/models/user";
 
 const USER_KEY = 'User';
 
