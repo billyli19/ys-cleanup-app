@@ -1,10 +1,11 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable, tap } from "rxjs";
-import { IUserLogin } from "../shared/interfaces/IUser";
+import { IUserLogin } from "../shared/interfaces/IUserLogin";
 import { HttpClient } from "@angular/common/http";
-import { USER_LOGIN_URL } from "../shared/constants/Api";
+import { USER_LOGIN_URL, USER_REGISTER_URL } from "../shared/constants/Api";
 import { ToastrService } from "ngx-toastr";
 import { User } from "../shared/models/User";
+import { IUserRegister } from "../shared/interfaces/IUserRegister";
 
 const USER_KEY = 'User';
 
@@ -20,7 +21,7 @@ export class UserService {
         this.userObservable= this.userSubject.asObservable();
     }
 
-    login(userLogin:IUserLogin):Observable<User>{
+    public login(userLogin:IUserLogin):Observable<User>{
         return this.http.post<User>(USER_LOGIN_URL, userLogin).pipe(
             tap({
                 next: (user) => {
@@ -28,7 +29,7 @@ export class UserService {
                     this.userSubject.next(user);
                     this.toastrService.success(
                         `Welcome to YS Cleanup!`,
-                        'Login Succesful'
+                        'Login Successful'
                     )
                 },
                 error: (errorResponse) => {
@@ -38,7 +39,25 @@ export class UserService {
         );
     }
 
-    logout() {
+    public register(userRegister: IUserRegister): Observable<User>{
+        return this.http.post<User>(USER_REGISTER_URL, userRegister).pipe(
+            tap({
+                next: (user) => {
+                    this.setUserToLocalStorage(user);
+                    this.userSubject.next(user);
+                    this.toastrService.success(
+                        `Welcome to YS Cleanup!`,
+                        `Register successful`
+                    )
+                },
+                error: (errorResponse) => {
+                    this.toastrService.error(errorResponse.error, 'Register Failed');
+                }
+            })
+        );
+    }
+
+    public logout() {
         this.userSubject.next(new User());
         localStorage.removeItem(USER_KEY);
         window.location.reload();

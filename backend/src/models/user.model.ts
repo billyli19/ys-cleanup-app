@@ -1,14 +1,11 @@
 import { Schema, model } from 'mongoose'
-import { Leaderboard } from './leaderboard.model';
-import { Organisation } from './organisation.model';
 
 export interface User {
-    id: string;
+    // id: string;
     name: string;
     email: string;
     password: string;
-    organisation: Organisation;
-    leaderboard: Leaderboard;
+    organisation: string;
 }
 
 export const UserSchema = new Schema<User>(

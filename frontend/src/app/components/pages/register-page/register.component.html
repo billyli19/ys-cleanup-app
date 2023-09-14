@@ -5,7 +5,7 @@
 
   <h1 class="title">Create a new account</h1>
 
-  <form [formGroup]="registerFormGroup" (ngSubmit)="onSubmit()">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <mat-form-field appearance="outline" class="inputField">
         <mat-label>Name</mat-label>
@@ -20,9 +20,6 @@
           placeholder="example@email.com"
           formControlName="email"
         />
-        <!-- <mat-error *ngIf="!registerFormGroup.controls['email'].valid">{{
-          getErrorMessage()
-        }}</mat-error> -->
       </mat-form-field>
     </div>
     <div class="form-group">
@@ -78,7 +75,7 @@
         mat-flat-button
         class="btn-filled"
         type="submit"
-        [disabled]="!registerFormGroup.valid"
+        [disabled]="!registerForm.valid"
       >
         Create account
       </button>
