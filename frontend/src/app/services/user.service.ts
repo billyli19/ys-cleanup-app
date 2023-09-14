@@ -4,7 +4,7 @@ import { IUserLogin } from "../shared/interfaces/IUser";
 import { HttpClient } from "@angular/common/http";
 import { USER_LOGIN_URL } from "../shared/constants/Api";
 import { ToastrService } from "ngx-toastr";
-import { User } from "../shared/models/user";
+import { User } from "../shared/models/User";
 
 const USER_KEY = 'User';
 

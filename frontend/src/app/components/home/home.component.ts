@@ -18,6 +18,6 @@ export class HomeComponent implements OnInit {
 
   logout() {
     this.userService.logout();
-    console.log('Logout succesful');
+    console.log('Logout successful');
   }
 }

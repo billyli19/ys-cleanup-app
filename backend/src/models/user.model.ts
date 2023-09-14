@@ -3,7 +3,7 @@ import { Leaderboard } from './leaderboard.model';
 import { Organisation } from './organisation.model';
 
 export interface User {
-    id: number;
+    id: string;
     name: string;
     email: string;
     password: string;
@@ -25,6 +25,6 @@ export const UserSchema = new Schema<User>(
         },
         timestamps: true
     }
-)
+);
 
 export const UserModel = model<User>('user', UserSchema);

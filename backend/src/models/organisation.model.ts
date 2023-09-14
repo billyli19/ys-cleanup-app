@@ -1,13 +1,13 @@
 import { Schema, model } from 'mongoose'
 
 export interface Organisation {
-    id: number;
+    id: string;
     name: string
 }
 
 export const OrganisationSchema = new Schema<Organisation>(
     {
-        name: { type: String }
+        name: { type: String}
     }, {
         toJSON: {
             virtuals: true
@@ -17,6 +17,6 @@ export const OrganisationSchema = new Schema<Organisation>(
         },
         timestamps: true
     }
-)
+);
 
 export const OrganisationModel = model<Organisation>('organisation', OrganisationSchema);

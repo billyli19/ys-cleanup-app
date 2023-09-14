@@ -1,15 +1,15 @@
 import { Schema, model } from 'mongoose'
 
 export interface Leaderboard {
-    id: number;
+    id: string;
     rank: number;
     points: number;
 }
 
 export const LeaderboardSchema = new Schema<Leaderboard>(
     {
-        rank:{ type: Number },
-        points:{ type: Number }
+        rank:{ type: Number},
+        points:{ type: Number}
     }, {
         toJSON: {
             virtuals: true
@@ -19,6 +19,6 @@ export const LeaderboardSchema = new Schema<Leaderboard>(
         },
         timestamps: true
     }
-)
+);
 
 export const LeaderboardModel = model<Leaderboard>('leaderboard', LeaderboardSchema);
