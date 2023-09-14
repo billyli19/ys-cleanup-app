@@ -19,6 +19,7 @@ import { LoginComponent } from './components/pages/login-page/login.component';
 import { NotfoundComponent } from './components/pages/notfound-page/notfound.component';
 import { RegisterComponent } from './components/pages/register-page/register.component';
 import { SigninComponent } from './components/pages/signin-page/signin.component';
+import { BottomBarComponent } from './components/partials/bottom-bar/bottom-bar.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { SigninComponent } from './components/pages/signin-page/signin.component
     RegisterComponent,
     SigninComponent,
     NotfoundComponent,
-    HomeComponent
+    HomeComponent,
+    BottomBarComponent
   ],
   imports: [
     BrowserModule,

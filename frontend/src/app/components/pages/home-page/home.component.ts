@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -8,9 +9,13 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private userService: UserService) {
+  name: string = 'John';
+  trashBags: number = 3;
+  totalScore: number = 890;
 
-  }
+  constructor(
+    private userService: UserService,
+    private router: Router) { }
 
   ngOnInit(): void {
     
@@ -18,6 +23,6 @@ export class HomeComponent implements OnInit {
 
   logout() {
     this.userService.logout();
-    console.log('Logout successful');
+    // this.router.navigateByUrl('/signin');
   }
 }

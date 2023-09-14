@@ -1,5 +1,23 @@
-<p>home works!</p>
+<div class="container">
+  <button mat-flat-button class="btn-filled" (click)="logout()">Logout</button>
+  <div class="info-container">
+    <div class="img-container">
+      <img src="./../../../../assets/images/Happy Earth-amico.png" />
+    </div>
 
-<button mat-flat-button (click)="logout()">
-  Logout
-</button>
+    <div class="header-container">
+      <h1 class="header-title">Hi {{ name }}!</h1>
+    </div>
+  </div>
+
+  <div class="activity-container">
+    <div classs="activity-title">Your Activies</div>
+    <h2 class="activity-label">Trash bags cleaned</h2>
+    <br />
+    {{ trashBags }}
+    <h2 class="activity-label">Total Score</h2>
+    {{ totalScore }}
+  </div>
+</div>
+
+<app-bottom-bar></app-bottom-bar>
