@@ -1,0 +1,53 @@
+<div class="container">
+  <mat-horizontal-stepper #stepper>
+    <mat-step completed="false">
+      <div class="title-container">
+        <h1 class="h1-title">Take a picture of the current situation</h1>
+      </div>
+
+      <div class="img-container">
+        <img src="./../../../assets/images/Focus-amico.png" />
+      </div>
+    </mat-step>
+    <mat-step completed="false">
+      <div class="title-container">
+        <h1 class="h1-title">Take a picture of the current situation</h1>
+      </div>
+
+      <div class="img-container">
+        <img src="./../../../assets/images/Underwater-selfie-amico.png" />
+      </div>
+    </mat-step>
+    <mat-step completed="false">
+      <div class="title-container">
+        <h1 class="h1-title">Summary</h1>
+      </div>
+
+      <div class="summary-container">
+        <h2 class="h2-title">Current Situation</h2>
+        <div class="img-thumbnail"></div>
+        <h2 class="h2-title">After Situation</h2>
+        <div class="img-thumbnail"></div>
+        <h2 class="h2-title">How many trash bags are in the photo?</h2>
+        <input
+          mdInput
+          type="number"
+          placeholder="Favorite food"
+          value="Sushi"
+        />
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+
+  <div class="btn-container">
+    <button class="btn-circle" (click)="goBack(stepper)">
+      <span class="material-symbols-outlined">arrow_back</span>
+    </button>
+    <button class="btn-pill">
+      <span class="material-symbols-outlined">camera</span>
+    </button>
+    <button class="btn-circle" (click)="goForward(stepper)" type="button">
+      <span class="material-symbols-outlined">arrow_right_alt</span>
+    </button>
+  </div>
+</div>

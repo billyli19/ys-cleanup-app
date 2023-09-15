@@ -5,6 +5,7 @@ import { LoginComponent } from './components/pages/login-page/login.component';
 import { NotfoundComponent } from './components/pages/notfound-page/notfound.component';
 import { RegisterComponent } from './components/pages/register-page/register.component';
 import { SigninComponent } from './components/pages/signin-page/signin.component';
+import { StepperComponent } from './components/pages/stepper-page/stepper.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     component: HomeComponent,
     path: 'home'
+  },
+  {
+    component: StepperComponent,
+    path: 'stepper'
   },
   {
     component: NotfoundComponent,
