@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import { sample_users } from '../mockData';
 import jwt from 'jsonwebtoken';
 import { User, UserModel } from '../models/user.model';
 import asyncHandler from 'express-async-handler';
@@ -7,19 +6,6 @@ import { HTTP_BAD_REQUEST, HTTP_UNAUTHORIZED } from '../constants/http_status';
 import bcrypt from 'bcryptjs';
 
 const router = Router();
-
-router.get("/seed", asyncHandler(
-    async(req, res) => {
-        const userCount = await UserModel.countDocuments();
-        if(userCount > 0) {
-            res.send("Seed is already done!");
-            return;
-        }
-
-        await UserModel.create(sample_users);
-        res.send("Seed is done");
-    }
-))
 
 router.post("/signin", asyncHandler(
     async (req, res) => {

@@ -1,22 +1,35 @@
 <div class="container">
-  <button mat-flat-button class="btn-filled" (click)="logout()">Logout</button>
+  <!-- <button mat-flat-button class="btn-filled" (click)="logout()">Logout</button> -->
+
+  <div class="header-container">
+    <div class="btn-container">
+      <button class="btn-circle">
+        <span class="material-symbols-outlined" (click)="logout()">
+          logout</span
+        >
+      </button>
+    </div>
+
+    <div class="header-title">
+      <h1 class="h1-title">CleanUp Event</h1>
+    </div>
+  </div>
+
   <div class="info-container">
     <div class="img-container">
       <img src="./../../../../assets/images/Happy Earth-amico.png" />
     </div>
-
-    <div class="header-container">
-      <h1 class="header-title">Hi {{ name }}!</h1>
+    <div class="head-container">
+      <h1 class="head-title">Hi! {{ currentUser.name }}</h1>
     </div>
   </div>
 
   <div class="activity-container">
-    <div classs="activity-title">Your Activies</div>
-    <h2 class="activity-label">Trash bags cleaned</h2>
-    <br />
-    {{ trashBags }}
-    <h2 class="activity-label">Total Score</h2>
-    {{ totalScore }}
+    <h2 class="activity-title">Your Activies</h2>
+    <h3 class="activity-label">Trash bags cleaned</h3>
+    <p class="p-style">{{ trashBags }}</p>
+    <h3 class="activity-label">Total Score</h3>
+    <p class="p-style">{{ totalScore }}</p>
   </div>
 </div>
 
