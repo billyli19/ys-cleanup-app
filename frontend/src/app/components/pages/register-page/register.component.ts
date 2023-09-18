@@ -1,10 +1,10 @@
 // Import necessary modules and components from Angular and custom services and models.
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from 'src/app/services/user.service';
-import { IUserRegister } from 'src/app/shared/interfaces/IUserRegister';
-import { PasswordMatchValidator } from 'src/app/shared/validators/password_match_validator';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service'; // Import the UserService for user-related operations.
+import { IUserRegister } from 'src/app/shared/interfaces/IUserRegister'; // Import the IUserRegister interface for defining user registration data structure.
+import { PasswordMatchValidator } from 'src/app/shared/validators/password_match_validator'; // Import the custom PasswordMatchValidator for checking password match.
 
 @Component({
   selector: 'app-register', // Specifies the selector used to identify this component in HTML templates.
@@ -26,13 +26,14 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     // Initialize the registerForm FormGroup with form controls and validators.
     this.registerForm = this.formBuilder.group({
-      name: new FormControl('', Validators.required),
-      email: new FormControl('', [Validators.email, Validators.required]),
-      password: new FormControl('', Validators.required),
-      confirmPassword: new FormControl('', Validators.required),
-      organisation: new FormControl('', Validators.required),
+      name: new FormControl('', Validators.required), // Name input field with required validation.
+      email: new FormControl('', [Validators.email, Validators.required]), // Email input field with email and required validation.
+      password: new FormControl('', Validators.required), // Password input field with required validation.
+      confirmPassword: new FormControl('', Validators.required), // Confirm Password input field with required validation.
+      organisation: new FormControl('', Validators.required), // Organisation select field with required validation.
     }, {
-      Validators: PasswordMatchValidator('password', 'confirmPassword') // Use a custom validator to check password and confirmPassword.
+      // Use the PasswordMatchValidator to check if passwords match.
+      validators: PasswordMatchValidator('password', 'confirmPassword')
     });
   }
 
@@ -42,7 +43,7 @@ export class RegisterComponent implements OnInit {
   }
 
   // Function to handle form submission.
-  onSubmit() {
+  public onSubmit() {
     if (this.registerForm.invalid) return; // If the form is invalid, do not proceed.
 
     // Extract form values and create a user object.
