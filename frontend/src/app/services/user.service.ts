@@ -1,3 +1,4 @@
+// Import necessary modules and components from Angular and external libraries.
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable, tap } from "rxjs";
 import { IUserLogin } from "../shared/interfaces/IUserLogin";
@@ -7,6 +8,7 @@ import { ToastrService } from "ngx-toastr";
 import { IUserRegister } from "../shared/interfaces/IUserRegister";
 import { User } from "../shared/models/user";
 
+// Constant for the key used to store user data in local storage.
 const USER_KEY = 'User';
 
 @Injectable({
@@ -15,22 +17,24 @@ const USER_KEY = 'User';
 
 export class UserService {
     private userSubject = new BehaviorSubject<User>(this.getUserFromLocalStorage());
-    public userObservable:Observable<User>;
+    public userObservable: Observable<User>;
     
-    constructor(private http:HttpClient, private toastrService: ToastrService) {
-        this.userObservable= this.userSubject.asObservable();
+    constructor(private http: HttpClient, private toastrService: ToastrService) {
+        this.userObservable = this.userSubject.asObservable();
     }
 
-    public get currentUser(): User{
+    // Getter for accessing the current user.
+    public get currentUser(): User {
         return this.userSubject.value;
-      }
+    }
 
-    public login(userLogin:IUserLogin):Observable<User>{
+    // Method for user login.
+    public login(userLogin: IUserLogin): Observable<User> {
         return this.http.post<User>(USER_LOGIN_URL, userLogin).pipe(
             tap({
                 next: (user) => {
-                    this.setUserToLocalStorage(user);
-                    this.userSubject.next(user);
+                    this.setUserToLocalStorage(user); // Store user data in local storage.
+                    this.userSubject.next(user); // Update the userSubject with the new user data.
                     this.toastrService.success(
                         `Welcome to YS Cleanup!`,
                         'Login Successful'
@@ -43,12 +47,13 @@ export class UserService {
         );
     }
 
-    public register(userRegister: IUserRegister): Observable<User>{
+    // Method for user registration.
+    public register(userRegister: IUserRegister): Observable<User> {
         return this.http.post<User>(USER_REGISTER_URL, userRegister).pipe(
             tap({
                 next: (user) => {
-                    this.setUserToLocalStorage(user);
-                    this.userSubject.next(user);
+                    this.setUserToLocalStorage(user); // Store user data in local storage.
+                    this.userSubject.next(user); // Update the userSubject with the new user data.
                     this.toastrService.success(
                         `Welcome to YS Cleanup!`,
                         `Register successful`
@@ -61,19 +66,22 @@ export class UserService {
         );
     }
 
+    // Method for user logout.
     public logout() {
-        this.userSubject.next(new User());
-        localStorage.removeItem(USER_KEY);
-        window.location.reload();
+        this.userSubject.next(new User()); // Clear user data in the userSubject.
+        localStorage.removeItem(USER_KEY); // Remove user data from local storage.
+        window.location.reload(); // Reload the application to reset the state.
     }
 
-    private setUserToLocalStorage(user:User) {
+    // Private method to set user data in local storage.
+    private setUserToLocalStorage(user: User) {
         localStorage.setItem(USER_KEY, JSON.stringify(user));
     }
 
+    // Private method to get user data from local storage.
     private getUserFromLocalStorage(): User {
         const userJson = localStorage.getItem(USER_KEY);
-        if(userJson) return JSON.parse(userJson) as User;
+        if (userJson) return JSON.parse(userJson) as User;
         return new User();
     }
 }
