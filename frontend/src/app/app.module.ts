@@ -8,8 +8,6 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 
-import { WebcamModule } from 'ngx-webcam';
-
 // ANGULAR MATERIAL MODULES
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -62,10 +60,9 @@ import { LeaderboardComponent } from './components/pages/leaderboard-page/leader
       newestOnTop:false
     }),
     MatStepperModule,
-    WebcamModule,
     MatTabsModule
   ],
-  providers: [],
+  providers:[],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
