@@ -1,14 +1,14 @@
-// STANDARD ANGUALR MODULES
+// Import necessary Angular modules and components.
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module'; // Import the routing module.
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms'
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule } from 'ngx-toastr'; // Import a third-party Toastr module for displaying notifications.
 
-// ANGULAR MATERIAL MODULES
+// Import Angular Material modules for UI components.
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -18,7 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatTabsModule } from '@angular/material/tabs';
 
-// COMPONENTS
+// Import components used in the application.
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/pages/home-page/home.component';
 import { LoginComponent } from './components/pages/login-page/login.component';
@@ -31,6 +31,7 @@ import { LeaderboardComponent } from './components/pages/leaderboard-page/leader
 
 @NgModule({
   declarations: [
+    // Declare all the application components.
     AppComponent,
     LoginComponent,
     RegisterComponent,
@@ -42,8 +43,9 @@ import { LeaderboardComponent } from './components/pages/leaderboard-page/leader
     LeaderboardComponent
   ],
   imports: [
+    // Import and configure Angular and third-party modules.
     BrowserModule,
-    AppRoutingModule,
+    AppRoutingModule, // Import the routing module.
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
@@ -55,14 +57,14 @@ import { LeaderboardComponent } from './components/pages/leaderboard-page/leader
     MatAutocompleteModule,
     MatSelectModule,
     ToastrModule.forRoot({
-      timeOut:3000,
-      positionClass:"toast-bottom-right",
-      newestOnTop:false
-    }),
+      timeOut: 3000,
+      positionClass: "toast-bottom-right",
+      newestOnTop: false
+    }), // Configure Toastr module for notifications.
     MatStepperModule,
     MatTabsModule
   ],
-  providers:[],
-  bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [AppComponent] // Specify the root component for bootstrapping the application.
 })
 export class AppModule { }
