@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="header-container">
+        <h1 class="header-title">Leaderboard</h1>
+    </div>
+
+    <div class="tab-container">
+        <mat-tab-group>
+            <mat-tab label="Individual">
+                rank, player, score
+
+                <div class="rank">
+                    {{ currentUser.rank }} {{ currentUser.name }} {{ currentUser.score }}
+                </div>
+            </mat-tab>
+            <mat-tab label="Organisations"> Content 2 </mat-tab>
+          </mat-tab-group>
+    </div>
+</div>
+
+<app-bottom-bar></app-bottom-bar>
+

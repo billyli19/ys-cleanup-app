@@ -18,6 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatTabsModule } from '@angular/material/tabs';
 
 // COMPONENTS
 import { AppComponent } from './app.component';
@@ -28,6 +29,7 @@ import { RegisterComponent } from './components/pages/register-page/register.com
 import { SigninComponent } from './components/pages/signin-page/signin.component';
 import { BottomBarComponent } from './components/partials/bottom-bar/bottom-bar.component';
 import { StepperComponent } from './components/pages/stepper-page/stepper.component';
+import { LeaderboardComponent } from './components/pages/leaderboard-page/leaderboard.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { StepperComponent } from './components/pages/stepper-page/stepper.compon
     NotfoundComponent,
     HomeComponent,
     BottomBarComponent,
-    StepperComponent
+    StepperComponent,
+    LeaderboardComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,8 @@ import { StepperComponent } from './components/pages/stepper-page/stepper.compon
       newestOnTop:false
     }),
     MatStepperModule,
-    WebcamModule
+    WebcamModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

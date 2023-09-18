@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
-import { User } from 'src/app/shared/models/User';
+import { User } from 'src/app/shared/models/user';
 
 @Component({
   selector: 'app-home',
@@ -10,10 +10,7 @@ import { User } from 'src/app/shared/models/User';
 })
 export class HomeComponent implements OnInit {
 
-  //TODO: get trashBags & totalScore dynamically
   currentUser: User;
-  trashBags: number = 3;
-  totalScore: number = 890;
 
   constructor(
     private userService: UserService,

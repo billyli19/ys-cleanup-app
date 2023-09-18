@@ -22,7 +22,7 @@ router.post("/signin", asyncHandler(
 
 router.post("/register", asyncHandler(
     async(req, res) => {
-        const { name, email, password, organisation} = req.body;
+        const { name, email, password, organisation } = req.body;
         const user = await UserModel.findOne({email});
         if(user) {
             res.status(HTTP_UNAUTHORIZED).send("email or password is not valid");
@@ -35,7 +35,10 @@ router.post("/register", asyncHandler(
             name,
             email: email.toLowerCase(),
             password: encryptedPassword,
-            organisation
+            organisation,
+            rank: 0,
+            score: 0,
+            trashBags: 0
         }
         const dbUser = await UserModel.create(newUser);
 
