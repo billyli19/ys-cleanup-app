@@ -18,4 +18,8 @@ export class StepperComponent {
   goForward(stepper: MatStepper) {
     stepper.next(); // Use the MatStepper's 'next()' method to navigate to the next step.
   }
+
+  submit(stepper: MatStepper){
+    console.log("submitted", stepper);
+}
 }
