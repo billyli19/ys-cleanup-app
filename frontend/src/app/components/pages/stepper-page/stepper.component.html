@@ -52,6 +52,9 @@
   </div>
 
   <div class="btn-container" *ngIf="stepper.selectedIndex === 2">
+    <button class="btn-circle" (click)="goBack(stepper)">
+      <span class="material-symbols-outlined">arrow_back</span>
+    </button>
     <button class="btn-submit" (click)="submit(stepper)">Submit</button>
   </div>
 </div>

@@ -20,6 +20,6 @@ export class StepperComponent {
   }
 
   submit(stepper: MatStepper){
-    console.log("submitted", stepper);
-}
+    console.log("submitted");
+  }
 }
