@@ -32,6 +32,15 @@
   border-radius: 2rem;
 }
 
+.btn-pill input {
+  display: none;
+}
+
+.img-preview {
+  height: 116px;
+  width: 116px;
+}
+
 .btn-submit {
   width: 15rem;
   height: 3.125rem;

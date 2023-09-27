@@ -6,7 +6,7 @@
       </div>
 
       <div class="img-container">
-        <img src="./../../../assets/images/Focus-amico.png" />
+        <img [src]="imageDetails.currecntImageSrc || 'assets/images/Focus-amico.png'" />
       </div>
     </mat-step>
     <mat-step completed="false">
@@ -15,7 +15,7 @@
       </div>
 
       <div class="img-container">
-        <img src="./../../../assets/images/Underwater-selfie-amico.png" />
+        <img [src]="imageDetails.afterImageSrc || 'assets/images/Underwater-selfie-amico.png'" />
       </div>
     </mat-step>
     <mat-step completed="false">
@@ -23,17 +23,22 @@
         <h1 class="h1-title">Summary</h1>
       </div>
 
-      <div class="summary-container">
+      <div class="summary-container" *ngIf="imageDetails">
         <h2 class="h2-title">Current Situation</h2>
-        <div class="img-thumbnail"></div>
+        <div class="img-thumbnail">
+          <img id="blah" class="img-preview" [src]="imageDetails.currecntImageSrc || 'assets/images/Focus-amico.png'" alt="your image" />
+        </div>
         <h2 class="h2-title">After Situation</h2>
-        <div class="img-thumbnail"></div>
+        <div class="img-thumbnail">
+          <img id="blah" class="img-preview" [src]="imageDetails.afterImageSrc || 'assets/images/Underwater-selfie-amico.png'" alt="your image" />
+        </div>
         <h2 class="h2-title">How many trash bags are in the photo?</h2>
         <input
           mdInput
           type="number"
-          placeholder="Favorite food"
-          value="Sushi"
+          placeholder="Please enter trash bag counts"
+          [value]="imageDetails.begCount"
+          (chnage)="totalTrashBags($event)"
         />
       </div>
     </mat-step>
@@ -44,8 +49,10 @@
       <span class="material-symbols-outlined">arrow_back</span>
     </button>
     <button class="btn-pill">
-      <span class="material-symbols-outlined">camera</span>
+      <input #captureImageInput type="file" (change)="captureImageFile(stepper, captureImageInput)" id="captureImage" accept="image/*" capture  />
+      <span class="material-symbols-outlined" (click)="captureImage(stepper)">camera</span>
     </button>
+    
     <button class="btn-circle" (click)="goForward(stepper)" type="button">
       <span class="material-symbols-outlined">arrow_right_alt</span>
     </button>
