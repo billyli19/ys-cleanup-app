@@ -29,7 +29,5 @@ export class HomeComponent implements OnInit {
   // Define a public method for logging out the current user.
   public logout() {
     this.userService.logout(); // Call the logout method from the UserService to log out the user.
-    // Optionally, you can uncomment the next line to navigate to a sign-in page after logout.
-    // this.router.navigateByUrl('/signin');
   }
 }

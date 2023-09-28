@@ -4,5 +4,4 @@ export interface IUserRegister {
     email: string;           // Represents the user's email address for registration.
     password: string;        // Represents the user's chosen password for registration.
     confirmPassword: string; // Represents the confirmation of the user's password for registration.
-    organisation: string;    // Represents the user's organization or affiliation for registration.
 }

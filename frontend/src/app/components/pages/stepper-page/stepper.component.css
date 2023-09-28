@@ -1,5 +1,6 @@
 .container {
   padding: 1.6rem;
+  border: 1px solid red;
 }
 
 .h1-title {
@@ -51,10 +52,6 @@
   font-size: 1.5rem;
 }
 
-.material-symbols-outlined {
-  color: white;
-}
-
 .img-container {
   position: relative;
   display: flex;
@@ -68,10 +65,40 @@
   max-height: 100%;
 }
 
-.summary-container input{
+.summary-container input {
   width: 100%;
   padding: 0.5rem;
   border-radius: 0.5rem;
   border: 1px solid #98c21d;
   font-size: 1rem;
+}
+
+/** custom CSS as per your :required */
+::ng-deep .mat-horizontal-stepper-header {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+}
+
+::ng-deep .mat-horizontal-stepper-header .mat-step-label {
+  padding: 0px 0px 8px !important; /* Adjust the bottom padding */
+}
+
+::ng-deep
+  .mat-stepper-label-position-bottom
+  .mat-horizontal-stepper-header:not(:first-child)::before,
+::ng-deep
+  .mat-stepper-label-position-bottom
+  .mat-horizontal-stepper-header:not(:last-child)::after {
+  top: 64px !important;
+}
+
+::ng-deep .mat-horizontal-stepper-header .mat-step-icon-selected {
+  background-color: #618200;
+}
+
+.icon-color {
+  color: #ffffff;
 }

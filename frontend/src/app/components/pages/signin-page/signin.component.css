@@ -32,10 +32,6 @@
   border: none;
 }
 
-.material-symbols-outlined {
-  color: white;
-}
-
 mat-form-field {
   width: 100%;
 }
@@ -95,4 +91,8 @@ mat-form-field {
   font-weight: 500;
   line-height: normal;
   text-decoration-line: underline;
+}
+
+.icon-color {
+  color: #ffffff;
 }

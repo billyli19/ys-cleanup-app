@@ -19,10 +19,6 @@
   border: none;
 }
 
-.material-symbols-outlined {
-  color: white;
-}
-
 .img-container {
   position: relative;
   display: flex;
@@ -54,4 +50,8 @@
 
 p {
   margin: 1rem;
+}
+
+.icon-color {
+  color: #ffffff;
 }
