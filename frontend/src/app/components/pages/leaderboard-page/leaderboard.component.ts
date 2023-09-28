@@ -27,7 +27,7 @@ export class LeaderboardComponent implements OnInit {
       this.currentUser = JSON.parse(userJson); // Parse and assign the user data to currentUser.
     }
     this.leaderboardService.getJSON().subscribe({
-      next: (response) => {
+      next: (response: User[]) => {
         if (response) {
           this.leaderboard = response;
         }
