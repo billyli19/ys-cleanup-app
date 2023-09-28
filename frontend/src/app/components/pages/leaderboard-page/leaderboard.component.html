@@ -1,20 +1,20 @@
 <div class="container">
-    <div class="header-container">
-        <h1 class="header-title">Leaderboard</h1>
-    </div>
+  <div class="header-container">
+    <h1 class="header-title">Leaderboard</h1>
+  </div>
 
-    <div class="tab-container">
-        <div class="row header">
-            <div class="cell rank">Rank</div>
-            <div class="cell player">Player</div>
-            <div class="cell points">Points</div>
-        </div>
-        <div *ngFor="let user of leaderboard" class="row">
-            <div class="cell rank">{{user.rank}}</div>
-            <div class="cell player">{{user.name}}</div>
-            <div class="cell points">{{user.score}}</div>
-        </div>
+  <div class="tab-container">
+    <div class="row header">
+      <div class="cell rank">Rank</div>
+      <div class="cell player">Player</div>
+      <div class="cell points">Points</div>
     </div>
+    <div *ngFor="let user of leaderboard; let i = index" class="row">
+      <div class="cell rank">{{ i + 1 }}</div>
+      <div class="cell player">{{ user.name }}</div>
+      <div class="cell points">{{ user.score }}</div>
+    </div>
+  </div>
 </div>
 
 <app-bottom-bar></app-bottom-bar>

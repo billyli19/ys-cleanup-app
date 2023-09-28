@@ -13,7 +13,7 @@ import { AuthGuard } from './auth/guards/auth.guard';
 // Define the application's routes using the Routes interface.
 const routes: Routes = [
   {
-    component: HomeComponent, // Component to render when the path is empty.
+    component: LoginComponent, // Component to render when the path is empty.
     path: ''
   },
   {
@@ -27,7 +27,7 @@ const routes: Routes = [
   {
     component: HomeComponent, // Component to render when the path is 'home'.
     path: 'home',
-    canActivate: [AuthGuard] // Use the AuthGuard to protect access to this route.
+    // canActivate: [AuthGuard] // Use the AuthGuard to protect access to this route.
   },
   {
     component: StepperComponent, // Component to render when the path is 'stepper'.

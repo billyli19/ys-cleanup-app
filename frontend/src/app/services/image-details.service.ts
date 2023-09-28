@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ImageDetails, initialImageDetails } from '../shared/interfaces/ImageDetails';
+import { ImageDetails, initialImageDetails } from '../shared/interfaces/IImageDetails';
 
 @Injectable()
 export class ImageDetailsService {

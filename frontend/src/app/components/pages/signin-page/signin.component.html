@@ -1,6 +1,6 @@
 <div class="container">
-  <button class="btn-circle">
-    <span class="material-symbols-outlined" routerLink=""> arrow_back </span>
+  <button mat-icon-button class="btn-circle">
+    <mat-icon routerLink="" class="icon-color"> arrow_back </mat-icon>
   </button>
 
   <h1 class="title">Hi, Welcome back!</h1>
@@ -41,7 +41,7 @@
     </div>
     <div class="btn-container">
       <button
-        mat-flat-button
+        mat-icon-button
         class="btn-filled"
         type="submit"
         [disabled]="!signinForm.valid"

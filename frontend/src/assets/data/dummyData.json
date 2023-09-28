@@ -4,9 +4,7 @@
         "name": "John Doe",
         "email": "johndoe@example.com",
         "password": "hashed_password_1",
-        "organisation": "Eco Warriors",
-        "rank": 1,
-        "score": 1000,
+        "score": 3000,
         "trashBags": 100
     },
     {
@@ -14,9 +12,7 @@
         "name": "Jane Smith",
         "email": "janesmith@example.com",
         "password": "hashed_password_2",
-        "organisation": "Green Squad",
-        "rank": 2,
-        "score": 950,
+        "score": 2050,
         "trashBags": 95
     },
     {
@@ -24,8 +20,6 @@
         "name": "Rosa Sky",
         "email": "rosasky@example.com",
         "password": "hashed_password_20",
-        "organisation": "Eco Fighters",
-        "rank": 3,
         "score": 50,
         "trashBags": 5
     },
@@ -34,8 +28,6 @@
         "name": "Rosa Sky",
         "email": "rosasky@example.com",
         "password": "hashed_password_20",
-        "organisation": "Eco Fighters",
-        "rank": 4,
         "score": 50,
         "trashBags": 5
     },
@@ -44,8 +36,6 @@
         "name": "Rosa Sky",
         "email": "rosasky@example.com",
         "password": "hashed_password_20",
-        "organisation": "Eco Fighters",
-        "rank": 5,
         "score": 50,
         "trashBags": 5
     },
@@ -54,8 +44,6 @@
         "name": "Rosa Sky",
         "email": "rosasky@example.com",
         "password": "hashed_password_20",
-        "organisation": "Eco Fighters",
-        "rank": 6,
         "score": 50,
         "trashBags": 5
     },
@@ -64,8 +52,6 @@
         "name": "Rosa Sky",
         "email": "rosasky@example.com",
         "password": "hashed_password_20",
-        "organisation": "Eco Fighters",
-        "rank": 7,
         "score": 50,
         "trashBags": 5
     }

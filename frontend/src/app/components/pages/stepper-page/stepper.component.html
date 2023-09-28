@@ -1,12 +1,16 @@
 <div class="container">
   <mat-horizontal-stepper #stepper>
-    <mat-step completed="false">
+    <mat-step id="mat-step-style" completed="false">
       <div class="title-container">
         <h1 class="h1-title">Take a picture of the current situation</h1>
       </div>
 
       <div class="img-container">
-        <img [src]="imageDetails.currecntImageSrc || 'assets/images/Focus-amico.png'" />
+        <img
+          [src]="
+            imageDetails.currentImageSrc || 'assets/images/Focus-amico.png'
+          "
+        />
       </div>
     </mat-step>
     <mat-step completed="false">
@@ -15,7 +19,12 @@
       </div>
 
       <div class="img-container">
-        <img [src]="imageDetails.afterImageSrc || 'assets/images/Underwater-selfie-amico.png'" />
+        <img
+          [src]="
+            imageDetails.afterImageSrc ||
+            'assets/images/Underwater-selfie-amico.png'
+          "
+        />
       </div>
     </mat-step>
     <mat-step completed="false">
@@ -26,11 +35,26 @@
       <div class="summary-container" *ngIf="imageDetails">
         <h2 class="h2-title">Current Situation</h2>
         <div class="img-thumbnail">
-          <img id="blah" class="img-preview" [src]="imageDetails.currecntImageSrc || 'assets/images/Focus-amico.png'" alt="your image" />
+          <img
+            id="blah"
+            class="img-preview"
+            [src]="
+              imageDetails.currentImageSrc || 'assets/images/Focus-amico.png'
+            "
+            alt="your image"
+          />
         </div>
         <h2 class="h2-title">After Situation</h2>
         <div class="img-thumbnail">
-          <img id="blah" class="img-preview" [src]="imageDetails.afterImageSrc || 'assets/images/Underwater-selfie-amico.png'" alt="your image" />
+          <img
+            id="blah"
+            class="img-preview"
+            [src]="
+              imageDetails.afterImageSrc ||
+              'assets/images/Underwater-selfie-amico.png'
+            "
+            alt="your image"
+          />
         </div>
         <h2 class="h2-title">How many trash bags are in the photo?</h2>
         <input
@@ -38,30 +62,46 @@
           type="number"
           placeholder="Please enter trash bag counts"
           [value]="imageDetails.begCount"
-          (chnage)="totalTrashBags($event)"
+          (change)="totalTrashBags($event)"
         />
       </div>
     </mat-step>
   </mat-horizontal-stepper>
 
   <div class="btn-container" *ngIf="stepper.selectedIndex !== 2">
-    <button class="btn-circle" (click)="goBack(stepper)">
-      <span class="material-symbols-outlined">arrow_back</span>
+    <button mat-icon-button class="btn-circle" (click)="goBack(stepper)">
+      <mat-icon class="icon-color">arrow_back</mat-icon>
     </button>
-    <button class="btn-pill">
-      <input #captureImageInput type="file" (change)="captureImageFile(stepper, captureImageInput)" id="captureImage" accept="image/*" capture  />
-      <span class="material-symbols-outlined" (click)="captureImage(stepper)">camera</span>
+    <button mat-icon-button class="btn-pill">
+      <input
+        #captureImageInput
+        type="file"
+        (change)="captureImageFile(stepper, captureImageInput)"
+        id="captureImage"
+        accept="image/*"
+        capture
+      />
+      <mat-icon class="icon-color" (click)="captureImage(stepper)"
+        >camera</mat-icon
+      >
     </button>
-    
-    <button class="btn-circle" (click)="goForward(stepper)" type="button">
-      <span class="material-symbols-outlined">arrow_right_alt</span>
+
+    <button
+      mat-icon-button
+      class="btn-circle"
+      (click)="goForward(stepper)"
+      type="button"
+    >
+      <mat-icon class="icon-color">arrow_forward</mat-icon>
     </button>
   </div>
 
   <div class="btn-container" *ngIf="stepper.selectedIndex === 2">
-    <button class="btn-circle" (click)="goBack(stepper)">
-      <span class="material-symbols-outlined">arrow_back</span>
+    <button mat-icon-button class="btn-circle" (click)="goBack(stepper)">
+      <mat-icon class="icon-color">arrow_back</mat-icon>
     </button>
     <button class="btn-submit" (click)="submit(stepper)">Submit</button>
   </div>
 </div>
+
+<app-bottom-bar></app-bottom-bar>

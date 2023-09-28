@@ -29,8 +29,7 @@ export class RegisterComponent implements OnInit {
       name: new FormControl('', Validators.required), // Name input field with required validation.
       email: new FormControl('', [Validators.email, Validators.required]), // Email input field with email and required validation.
       password: new FormControl('', Validators.required), // Password input field with required validation.
-      confirmPassword: new FormControl('', Validators.required), // Confirm Password input field with required validation.
-      organisation: new FormControl('', Validators.required), // Organisation select field with required validation.
+      confirmPassword: new FormControl('', Validators.required) // Confirm Password input field with required validation.
     }, {
       // Use the PasswordMatchValidator to check if passwords match.
       validators: PasswordMatchValidator('password', 'confirmPassword')
@@ -52,8 +51,7 @@ export class RegisterComponent implements OnInit {
       name: formValues.name,
       email: formValues.email,
       password: formValues.password,
-      confirmPassword: formValues.confirmPassword,
-      organisation: formValues.organisation
+      confirmPassword: formValues.confirmPassword
     };
 
     // Call the register method of UserService to register the user.
