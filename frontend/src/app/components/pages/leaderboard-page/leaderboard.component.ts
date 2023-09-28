@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/shared/models/user';
+import { LeaderboardService } from 'src/app/services/leaderboard.service';
 
 @Component({
   selector: 'app-leaderboard',
@@ -10,10 +11,11 @@ import { User } from 'src/app/shared/models/user';
   styleUrls: ['./leaderboard.component.css'] // Specifies the CSS styles for this component.
 })
 export class LeaderboardComponent implements OnInit {
-  
+  leaderboard: User[] = [];
   currentUser: User; // Declare a variable to store the current user.
 
   constructor(
+    private leaderboardService: LeaderboardService,
     private userService: UserService, // Inject the UserService for user-related operations.
     private router: Router // Inject the Router for navigating to different views.
   ) { }
@@ -24,5 +26,16 @@ export class LeaderboardComponent implements OnInit {
     if (userJson) {
       this.currentUser = JSON.parse(userJson); // Parse and assign the user data to currentUser.
     }
+    this.leaderboardService.getJSON().subscribe({
+      next: (response) => {
+        if (response) {
+          this.leaderboard = response;
+        }
+      },
+      error: (error)=>{
+        console.log(error);
+      }
+    }
+    )
   }
 }

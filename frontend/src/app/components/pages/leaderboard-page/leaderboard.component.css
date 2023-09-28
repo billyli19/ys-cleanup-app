@@ -14,3 +14,52 @@
 .tab-container {
     padding: 1rem;
 }
+
+.row {
+    display: flex;
+    padding: 1.5rem 0;
+    width: 100%;
+    border-radius: 1rem;
+    margin-bottom: 0.5rem;
+    background: #D3D7C9;
+}
+
+.row:nth-child(2) {
+    background: #98C21D;
+}
+
+.row:nth-child(3) {
+    background: #82AE00;
+}
+
+.row:nth-child(4) {
+    background: #618200;
+}
+
+.row.header {
+    border-radius: initial;
+    background-color: initial;
+}
+
+.cell {
+    font-size: 1.2rem;
+    padding: 0 1rem;
+}
+
+.row.header .cell {
+    font-weight: bold;
+    text-align: center;
+}
+
+.rank{
+    width: 20%;
+}
+
+.player{
+    width: 50%;
+}
+
+.points{
+    width: 30%;
+}
+

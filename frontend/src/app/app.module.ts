@@ -29,6 +29,7 @@ import { BottomBarComponent } from './components/partials/bottom-bar/bottom-bar.
 import { StepperComponent } from './components/pages/stepper-page/stepper.component';
 import { LeaderboardComponent } from './components/pages/leaderboard-page/leaderboard.component';
 import { ImageDetailsService } from './services/image-details.service';
+import { LeaderboardService } from './services/leaderboard.service';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,7 @@ import { ImageDetailsService } from './services/image-details.service';
     MatStepperModule,
     MatTabsModule
   ],
-  providers: [ImageDetailsService],
+  providers: [LeaderboardService, ImageDetailsService],
   bootstrap: [AppComponent] // Specify the root component for bootstrapping the application.
 })
 export class AppModule { }
