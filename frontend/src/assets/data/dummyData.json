@@ -54,5 +54,45 @@
         "password": "hashed_password_20",
         "score": 50,
         "trashBags": 5
+    },
+    {
+        "id": 1020,
+        "name": "Rosa Sky",
+        "email": "rosasky@example.com",
+        "password": "hashed_password_20",
+        "score": 50,
+        "trashBags": 5
+    },
+    {
+        "id": 1020,
+        "name": "Rosa Sky",
+        "email": "rosasky@example.com",
+        "password": "hashed_password_20",
+        "score": 50,
+        "trashBags": 5
+    },
+    {
+        "id": 1020,
+        "name": "Rosa Sky",
+        "email": "rosasky@example.com",
+        "password": "hashed_password_20",
+        "score": 50,
+        "trashBags": 5
+    },
+    {
+        "id": 1020,
+        "name": "Rosa Sky",
+        "email": "rosasky@example.com",
+        "password": "hashed_password_20",
+        "score": 50,
+        "trashBags": 5
+    },
+    {
+        "id": 1020,
+        "name": "Rosa Sky",
+        "email": "rosasky@example.com",
+        "password": "hashed_password_20",
+        "score": 50,
+        "trashBags": 5
     }
 ]
