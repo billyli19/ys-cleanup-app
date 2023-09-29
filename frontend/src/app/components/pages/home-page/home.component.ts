@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
     }
 
     // // Initialize currentUser with appropriate data
-    // this.currentUser.name = 'John Doe';
+    this.currentUser.name = 'John Doe';
     // this.currentUser.trashBags = 10;
     // this.currentUser.score = 100;
   }
