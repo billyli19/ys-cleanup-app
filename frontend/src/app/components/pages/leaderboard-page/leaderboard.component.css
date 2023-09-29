@@ -24,16 +24,8 @@
     background: #D3D7C9;
 }
 
-.row:nth-child(2) {
-    background: #98C21D;
-}
-
-.row:nth-child(3) {
-    background: #82AE00;
-}
-
-.row:nth-child(4) {
-    background: #618200;
+.row.current-user{
+    background: #A0D700;
 }
 
 .row.header {
