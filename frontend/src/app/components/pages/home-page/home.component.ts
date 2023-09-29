@@ -11,9 +11,9 @@ import { User } from 'src/app/shared/models/user';
 })
 export class HomeComponent implements OnInit {
 
-  // currentUser: User; // Declare a variable to store the current user.
+  currentUser: User; // Declare a variable to store the current user.
   
-  currentUser: { name: string, trashBags: number, score: number } = { name: '', trashBags: 0, score: 0 };
+  // currentUser: { name: string, trashBags: number, score: number } = { name: '', trashBags: 0, score: 0 };
 
   constructor(
     private userService: UserService, // Inject the UserService for user-related operations.
@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
     }
 
     // // Initialize currentUser with appropriate data
-    this.currentUser.name = 'John Doe';
+    // this.currentUser.name = 'John Doe';
     // this.currentUser.trashBags = 10;
     // this.currentUser.score = 100;
   }
