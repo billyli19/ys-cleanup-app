@@ -1,12 +1,22 @@
-// Import necessary module and component from Angular.
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
-  selector: 'app-bottom-bar', // Specifies the selector used to identify this component in HTML templates.
-  templateUrl: './bottom-bar.component.html', // Specifies the HTML template file for this component.
-  styleUrls: ['./bottom-bar.component.css'] // Specifies the CSS styles for this component.
+  selector: 'app-bottom-bar',
+  templateUrl: './bottom-bar.component.html',
+  styleUrls: ['./bottom-bar.component.css']
 })
-export class BottomBarComponent {
-  // This is a simple Angular component class.
-  // There are no additional methods or properties defined in this class.
+export class BottomBarComponent implements OnInit {
+  activeRoute: string = ''; // Initialize with an empty string
+
+  constructor(private router: Router) {}
+
+  ngOnInit() {
+    // Subscribe to NavigationEnd events to track the active route
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.activeRoute = event.urlAfterRedirects;
+      }
+    });
+  }
 }

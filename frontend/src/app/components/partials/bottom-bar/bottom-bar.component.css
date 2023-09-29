@@ -15,3 +15,7 @@
   justify-content: space-around;
 }
 
+/* Style the active link's icon with a green color */
+.active .mat-icon {
+  color: #618200;
+}
