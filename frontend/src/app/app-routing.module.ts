@@ -27,17 +27,17 @@ const routes: Routes = [
   {
     component: HomeComponent, // Component to render when the path is 'home'.
     path: 'home',
-    // canActivate: [AuthGuard] // Use the AuthGuard to protect access to this route.
+    canActivate: [AuthGuard] // Use the AuthGuard to protect access to this route.
   },
   {
     component: StepperComponent, // Component to render when the path is 'stepper'.
     path: 'stepper',
-    // canActivate: [AuthGuard] // Use the AuthGuard to protect access to this route.
+    canActivate: [AuthGuard] // Use the AuthGuard to protect access to this route.
   },
   {
     component: LeaderboardComponent, // Component to render when the path is 'leaderboard'.
     path: 'leaderboard',
-    // canActivate: [AuthGuard] // Use the AuthGuard to protect access to this route.
+    canActivate: [AuthGuard] // Use the AuthGuard to protect access to this route.
   },
   {
     component: NotfoundComponent, // Component to render when the path is anything else.

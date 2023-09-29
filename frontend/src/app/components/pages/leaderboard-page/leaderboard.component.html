@@ -1,16 +1,23 @@
 <div class="container">
+  <!-- Header -->
   <div class="header-container">
     <h1 class="header-title">Leaderboard</h1>
-  </div>
 
-  <div class="tab-container">
+    <!-- Table Header -->
     <div class="row header">
       <div class="cell rank">Rank</div>
       <div class="cell player">Player</div>
       <div class="cell points">Points</div>
     </div>
-    <div *ngFor="let user of leaderboard; let i = index"
-      [ngClass]="{'row': true,  'current-user': currentUser?.id === user.id }">
+  </div>
+
+  <!-- Leaderboard Table -->
+  <div class="tab-container">
+    <!-- User Rows -->
+    <div
+      *ngFor="let user of leaderboard; let i = index"
+      [ngClass]="{ row: true, 'current-user': currentUser?.id === user.id }"
+    >
       <div class="cell rank">{{ i + 1 }}</div>
       <div class="cell player">{{ user.name }}</div>
       <div class="cell points">{{ user.score }}</div>
@@ -18,4 +25,5 @@
   </div>
 </div>
 
+<!-- Bottom Bar Component -->
 <app-bottom-bar></app-bottom-bar>

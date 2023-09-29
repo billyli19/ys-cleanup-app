@@ -65,7 +65,6 @@ router.post("/register", asyncHandler(
 ));
 
 //submit amount of trash bags collected.
-
 router.post("/submitTrash", asyncHandler(
     async (req, res) => {
         // Extract amount of trashbags and user.
@@ -92,12 +91,11 @@ router.post("/submitTrash", asyncHandler(
     }
 ));
 
-
 //Get all users, only name and trash bags fields included
 router.get("/users", asyncHandler(
     async (req, res) => {
         //Find allUsers in DB;
-        const users = await UserModel.find({}).select('name trashBags');;
+        const users = await UserModel.find({}).select('name score trashBags');;
 
         // Check if the users are returned
         if (users) {
