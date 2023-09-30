@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="header-container">
+  <!-- <div class="header-container">
     <div class="btn-container">
       <button mat-icon-button class="btn-circle" (click)="logout()">
         <mat-icon class="icon-color">exit_to_app</mat-icon>
@@ -26,7 +26,9 @@
     <p class="p-style">{{ currentUser.trashBags }}</p>
     <h3 class="activity-label">Total Score</h3>
     <p class="p-style">{{ currentUser.score }}</p>
-  </div>
+  </div> -->
+
+  {{ currentUser | json }}
 </div>
 
 <app-bottom-bar></app-bottom-bar>

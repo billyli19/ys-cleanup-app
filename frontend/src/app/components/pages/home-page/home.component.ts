@@ -11,8 +11,9 @@ import { User } from 'src/app/shared/models/user';
 })
 export class HomeComponent implements OnInit {
 
-  currentUser: User; // Declare a variable to store the current user.
-  
+  currentUser: any; // Declare a variable to store the current user.
+  testData: any;
+
   // currentUser: { name: string, trashBags: number, score: number } = { name: '', trashBags: 0, score: 0 };
 
   constructor(
@@ -21,16 +22,26 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // When the component initializes, retrieve user information from local storage if available.
-    const userJson = localStorage.getItem('User');
-    if (userJson) {
-      this.currentUser = JSON.parse(userJson); // Parse and assign the user data to currentUser.
-    }
+    // // When the component initializes, retrieve user information from local storage if available.
+    // const userJson = localStorage.getItem('User');
+    // if (userJson) {
+    //   this.currentUser = JSON.parse(userJson); // Parse and assign the user data to currentUser.
+    // }
 
-    // // Initialize currentUser with appropriate data
-    // this.currentUser.name = 'John Doe';
-    // this.currentUser.trashBags = 10;
-    // this.currentUser.score = 100;
+    // this.userService.getData().subscribe((data) => {
+    //   this.testData = data;
+
+    //   console.log(this.testData);
+    // });
+
+    this.userService.getCurrentUser().subscribe((data) => {
+      this.testData = data;
+    });
+
+
+    // this.userService.getCurrentUser().subscribe((data) => {
+    //   this.currentUser = data;
+    // })
   }
 
   // Define a public method for logging out the current user.

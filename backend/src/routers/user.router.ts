@@ -3,7 +3,7 @@ import { Router } from 'express';
 import jwt from 'jsonwebtoken';
 import { User, UserModel } from '../models/user.model';
 import asyncHandler from 'express-async-handler';
-import {HTTP_OK_REQUEST, HTTP_BAD_REQUEST, HTTP_UNAUTHORIZED } from '../constants/http_status';
+import { HTTP_OK_REQUEST, HTTP_BAD_REQUEST, HTTP_UNAUTHORIZED } from '../constants/http_status';
 import bcrypt from 'bcryptjs';
 
 // Create an Express Router instance.
@@ -86,6 +86,26 @@ router.post("/submitTrash", asyncHandler(
             res.status(HTTP_OK_REQUEST).send("Trashbags have been updated!");
         } else {
             // Send an HTTP 400 Bad Request response for invalid credentials.
+            res.status(HTTP_BAD_REQUEST).send("Something went wrong!");
+        }
+    }
+));
+
+//Get user by email, only name and trash bags fields included
+router.get("/users/:email", asyncHandler(
+    async (req, res) => {
+        // Extract the email parameter from the request.
+        const { email } = req.params;
+
+        // Find the user in the DB based on the provided email and select specific fields.
+        const user = await UserModel.findOne({ email }).select('name score trashBags');
+
+        // Check if the user is found.
+        if (user) {
+            // Send the user object back as a response.
+            res.status(HTTP_OK_REQUEST).send(user);
+        } else {
+            // Send an HTTP 404 Not Found response if the user is not found.
             res.status(HTTP_BAD_REQUEST).send("Something went wrong!");
         }
     }

@@ -7,6 +7,7 @@ import express from "express";
 import cors from 'cors'; // Enable Cross-Origin Resource Sharing (CORS) middleware.
 import userRouter from './routers/user.router'; // Import user-related routes.
 import { dbConnect } from './configs/database.config'; // Connect to the database using a configuration.
+
 dbConnect(); // Establish a connection to the MongoDB database.
 
 // Create an Express application instance.
@@ -17,8 +18,10 @@ app.use(express.json());
 
 // Configure CORS settings to allow requests from specific origins.
 app.use(cors({
-    credentials: true,
-    origin: ["http://localhost:4200"] // Allow requests from http://localhost:4200.
+    // origin: ["http://localhost:4200"], // Allow requests from http://localhost:4200.
+    // origin: true,
+    origin: '*',
+    // credentials: true,
 }));
 
 // Mount user-related routes under the "/api/users" path.
