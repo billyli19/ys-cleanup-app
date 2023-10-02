@@ -1,6 +1,6 @@
 // Import necessary modules and components from Angular and external libraries.
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, tap, throwError } from 'rxjs';
 import { IUserLogin } from '../shared/interfaces/IUserLogin';
 import { HttpClient } from '@angular/common/http';
 import { USER_LOGIN_URL, USER_REGISTER_URL } from '../shared/constants/Api';
@@ -30,10 +30,22 @@ export class UserService {
     return this.http.get('http://localhost:8080/api/users/users/' + this.userEmail);
   }
 
-  // // Getter for accessing the current user.
-  // public get currentUser(): User {
-  //     return this.userSubject.value;
-  // }
+  public submitTrashBags(trashBags: number): Observable<any> {
+    const data = {
+      email: this.userEmail,
+      trashBags: trashBags
+    };
+
+    return this.http.post('http://localhost:8080/api/users/submitTrash', data).pipe(
+      tap(() => {
+        this.toastrService.success('Trash bags submitted successfully', 'Success');
+      }),
+      catchError((error) => {
+        this.toastrService.warning("Error submitting trash bags", "Error");
+        return throwError(error);
+      })
+    );
+  }
 
   // Method for user login.
   public login(userLogin: IUserLogin): Observable<User> {

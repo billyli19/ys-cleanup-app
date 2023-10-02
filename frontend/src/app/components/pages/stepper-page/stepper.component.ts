@@ -1,8 +1,10 @@
 // Import necessary modules and components from Angular and Angular Material.
+import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MatStepper } from '@angular/material/stepper';
 import { Router } from '@angular/router';
 import { ImageDetailsService } from 'src/app/services/image-details.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-stepper', // Specifies the selector used to identify this component in HTML templates.
@@ -13,8 +15,10 @@ export class StepperComponent {
   @ViewChild('captureImageInput') captureImageInput: ElementRef; // File upload input element
 
   constructor(
+    private userService: UserService,
     private imageDetailsService: ImageDetailsService,
-    private router: Router
+    private router: Router,
+    private http: HttpClient
   ) {}
 
   // Get the image details from the ImageDetailsService.
@@ -38,18 +42,31 @@ export class StepperComponent {
 
   // Function to go forward one step in the stepper.
   goForward(stepper: MatStepper) {
-    console.log(stepper.selectedIndex, this.imageDetails);
+    // console.log(stepper.selectedIndex, this.imageDetails);
     stepper.next(); // Use the MatStepper's 'next()' method to navigate to the next step.
   }
 
   // Function for handling the submission.
   submit(stepper: MatStepper) {
-    console.log('submitted');
+    const begCountString: string | undefined = this.imageDetails.begCount?.toString();
+
+    if(begCountString !== undefined && begCountString !== '') {
+      const trashBags: number = parseFloat(begCountString);
+      this.userService.submitTrashBags(trashBags).subscribe(
+        (response) => {
+          console.log('Trash bags submitted successfully', response);
+        },
+        (error) => {
+          console.error('Error submitting trash bags', error);
+        }
+      );
+    } else {
+      console.error('Stepper Component: Invalid number of trash bags');
+    }
   }
 
   // Function for triggering the file input element.
   captureImage(stepper: MatStepper) {
-    console.log('submitted', stepper);
     this.captureImageInput.nativeElement.click();
   }
 
@@ -64,11 +81,6 @@ export class StepperComponent {
 
     // Read the file as a data URL.
     reader.readAsDataURL(file);
-    console.log(
-      'submitted',
-      stepper.selectedIndex,
-      this.imageDetails.afterImageSrc
-    );
   }
 
   // Function to set image details based on the current stepper index.

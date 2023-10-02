@@ -68,22 +68,22 @@ router.post("/register", asyncHandler(
 router.post("/submitTrash", asyncHandler(
     async (req, res) => {
         // Extract amount of trashbags and user.
-        const { email, trashbags } = req.body;
+        const { email, trashBags } = req.body;
 
         //Find user in DB;
         const user = await UserModel.findOne({ email });
 
         // Check if the user exists
         if (user) {
-            //Update trash bags for User in database
             const filter = { email: email };
-            const update = { trashBags: user.trashBags + trashbags };
+            const update = { trashBags: user.trashBags + trashBags };
 
             // Update trash bags
             await UserModel.findOneAndUpdate(filter, update);
 
             // Send a response that update was successful!
             res.status(HTTP_OK_REQUEST).send("Trashbags have been updated!");
+            //Update trash bags for User in database
         } else {
             // Send an HTTP 400 Bad Request response for invalid credentials.
             res.status(HTTP_BAD_REQUEST).send("Something went wrong!");

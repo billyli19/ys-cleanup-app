@@ -1,10 +1,10 @@
 <div class="container">
   <mat-horizontal-stepper #stepper>
-    <mat-step id="mat-step-style" completed="false">
+    <!-- Step 1 -->
+    <mat-step [completed]="false">
       <div class="title-container">
         <h1 class="h1-title">Take a picture of the current situation</h1>
       </div>
-
       <div class="img-container">
         <img
           [src]="
@@ -13,11 +13,12 @@
         />
       </div>
     </mat-step>
-    <mat-step completed="false">
-      <div class="title-container">
-        <h1 class="h1-title">Take a picture of the current situation</h1>
-      </div>
 
+    <!-- Step 2 -->
+    <mat-step [completed]="false">
+      <div class="title-container">
+        <h1 class="h1-title">Take a picture of the after situation</h1>
+      </div>
       <div class="img-container">
         <img
           [src]="
@@ -27,12 +28,14 @@
         />
       </div>
     </mat-step>
-    <mat-step completed="false">
+
+    <!-- Step 3 -->
+    <mat-step [completed]="false">
       <div class="title-container">
         <h1 class="h1-title">Summary</h1>
       </div>
-
       <div class="summary-container" *ngIf="imageDetails">
+        <!-- Current Situation -->
         <h2 class="h2-title">Current Situation</h2>
         <div class="img-thumbnail">
           <img
@@ -41,9 +44,11 @@
             [src]="
               imageDetails.currentImageSrc || 'assets/images/Focus-amico.png'
             "
-            alt="your image"
+            alt="Current image"
           />
         </div>
+
+        <!-- After Situation -->
         <h2 class="h2-title">After Situation</h2>
         <div class="img-thumbnail">
           <img
@@ -53,9 +58,11 @@
               imageDetails.afterImageSrc ||
               'assets/images/Underwater-selfie-amico.png'
             "
-            alt="your image"
+            alt="After image"
           />
         </div>
+
+        <!-- Trash Bags Input -->
         <h2 class="h2-title">How many trash bags are in the photo?</h2>
         <input
           mdInput
@@ -68,6 +75,7 @@
     </mat-step>
   </mat-horizontal-stepper>
 
+  <!-- Button Container (Step 1 and 2) -->
   <div class="btn-container" *ngIf="stepper.selectedIndex !== 2">
     <button mat-icon-button class="btn-circle" (click)="goBack(stepper)">
       <mat-icon class="icon-color">arrow_back</mat-icon>
@@ -85,7 +93,6 @@
         >camera</mat-icon
       >
     </button>
-
     <button
       mat-icon-button
       class="btn-circle"
@@ -96,11 +103,14 @@
     </button>
   </div>
 
+  <!-- Button Container (Step 3) -->
   <div class="btn-container" *ngIf="stepper.selectedIndex === 2">
     <button mat-icon-button class="btn-circle" (click)="goBack(stepper)">
       <mat-icon class="icon-color">arrow_back</mat-icon>
     </button>
-    <button class="btn-submit" (click)="submit(stepper)">Submit</button>
+    <button class="btn-submit" type="submit" (click)="submit(stepper)">
+      Submit
+    </button>
   </div>
 </div>
 

@@ -17,7 +17,7 @@ export const UserSchema = new Schema<User>(
         email: { type: String, required: true },        // Email field is required.
         password: { type: String, required: true },     // Password field is required.
         score: { type: Number, required: false },        // Score is optional.
-        trashBags: { type: Number, required: false }    // Trash bags count is optional.
+        trashBags: { type: Number, default: 0 }    // Trash bags count is optional.
     }, {
         // Define additional configuration options for the schema.
         toJSON: {
