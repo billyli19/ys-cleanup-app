@@ -16,7 +16,7 @@
     <!-- User Rows -->
     <div
       *ngFor="let user of leaderboard; let i = index"
-      [ngClass]="{ row: true, 'current-user': currentUser?.id === user.id }"
+      [ngClass]="{ row: true, 'current-user': currentUser.id === user.id }"
     >
       <div class="cell rank">{{ i + 1 }}</div>
       <div class="cell player">{{ user.name }}</div>

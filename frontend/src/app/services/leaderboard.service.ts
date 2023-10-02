@@ -11,4 +11,8 @@ export class LeaderboardService {
   public getJSON(): Observable<any> {
     return this.http.get<User[]>("assets/data/dummyData.json");
   }
+
+    getAllUsers(): Observable<any> {
+    return this.http.get<User[]>('http://localhost:8080/api/users/users');
+  }
 }
