@@ -1,5 +1,5 @@
 <div class="container">
-  <!-- <div class="header-container">
+  <div class="header-container">
     <div class="btn-container">
       <button mat-icon-button class="btn-circle" (click)="logout()">
         <mat-icon class="icon-color">exit_to_app</mat-icon>
@@ -16,19 +16,21 @@
       <img src="./../../../../assets/images/Happy Earth-amico.png" />
     </div>
     <div class="head-container">
-      <h1 class="head-title">Hi! {{ currentUser.name }}</h1>
+      <div *ngIf="currentUser">
+        <h1 class="head-title">Hi! {{ currentUser.name }}</h1>
+      </div>
     </div>
   </div>
 
   <div class="activity-container">
-    <h2 class="activity-title">Your Activities</h2>
-    <h3 class="activity-label">Trash bags cleaned</h3>
-    <p class="p-style">{{ currentUser.trashBags }}</p>
-    <h3 class="activity-label">Total Score</h3>
-    <p class="p-style">{{ currentUser.score }}</p>
-  </div> -->
-
-  {{ currentUser | json }}
+    <div *ngIf="currentUser">
+      <h2 class="activity-title">Your Activities</h2>
+      <h3 class="activity-label">Trash bags cleaned</h3>
+      <p class="p-style">{{ currentUser.trashBags }}</p>
+      <h3 class="activity-label">Total Score</h3>
+      <p class="p-style">{{ currentUser.score }}</p>
+    </div>
+  </div>
 </div>
 
 <app-bottom-bar></app-bottom-bar>

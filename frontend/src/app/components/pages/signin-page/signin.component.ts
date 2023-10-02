@@ -36,7 +36,7 @@ export class SigninComponent implements OnInit {
 
   // Function to handle form submission.
   onSubmit() {
-    console.log(this.signinForm.value); // Log the form values to the console for debugging (can be removed in production).
+    //console.log(this.signinForm.value); // Log the form values to the console for debugging (can be removed in production).
 
     // Call the login method of UserService to authenticate the user.
     this.userService.login({

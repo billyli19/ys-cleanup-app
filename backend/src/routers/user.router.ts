@@ -98,7 +98,7 @@ router.get("/users/:email", asyncHandler(
         const { email } = req.params;
 
         // Find the user in the DB based on the provided email and select specific fields.
-        const user = await UserModel.findOne({ email }).select('name score trashBags');
+        const user = await UserModel.findOne({ email }).select('name trashBags score');
 
         // Check if the user is found.
         if (user) {

@@ -24,12 +24,10 @@ export class UserService {
     this.userObservable = this.userSubject.asObservable();
   }
 
-  // getData() {
-  //   return this.http.get('https://api.publicapis.org/entries');
-  // }
+  private userEmail = this.userSubject.value.email;
 
   getCurrentUser() {
-    return this.http.get('localhost:8080/api/users/users/johndoe@example.com');
+    return this.http.get('http://localhost:8080/api/users/users/' + this.userEmail);
   }
 
   // // Getter for accessing the current user.
