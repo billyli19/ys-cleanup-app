@@ -1,5 +1,4 @@
 // Import necessary modules and components from Angular and Angular Material.
-import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MatStepper } from '@angular/material/stepper';
 import { Router } from '@angular/router';
@@ -9,7 +8,7 @@ import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-stepper', // Specifies the selector used to identify this component in HTML templates.
   templateUrl: './stepper.component.html', // Specifies the HTML template file for this component.
-  styleUrls: ['./stepper.component.css'] // Specifies the CSS styles for this component.
+  styleUrls: ['./stepper.component.css'], // Specifies the CSS styles for this component.
 })
 export class StepperComponent {
   @ViewChild('captureImageInput') captureImageInput: ElementRef; // File upload input element
@@ -17,8 +16,7 @@ export class StepperComponent {
   constructor(
     private userService: UserService,
     private imageDetailsService: ImageDetailsService,
-    private router: Router,
-    private http: HttpClient
+    private router: Router
   ) {}
 
   // Get the image details from the ImageDetailsService.
@@ -48,11 +46,15 @@ export class StepperComponent {
 
   // Function for handling the submission.
   submit(stepper: MatStepper) {
-    const begCountString: string | undefined = this.imageDetails.begCount?.toString();
+    const user: any = localStorage.getItem('User');
+    const currentUser: any = JSON.parse(user);
 
-    if(begCountString !== undefined && begCountString !== '') {
+    const begCountString: string | undefined =
+      this.imageDetails.begCount?.toString();
+
+    if (begCountString !== undefined && begCountString !== '') {
       const trashBags: number = parseFloat(begCountString);
-      this.userService.submitTrashBags(trashBags).subscribe(
+      this.userService.submitTrashBags(currentUser?.email, trashBags).subscribe(
         (response) => {
           console.log('Trash bags submitted successfully', response);
         },

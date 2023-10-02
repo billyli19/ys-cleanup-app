@@ -24,28 +24,34 @@ export class UserService {
     this.userObservable = this.userSubject.asObservable();
   }
 
-  private userEmail = this.userSubject.value.email;
-
-  getCurrentUser() {
-    return this.http.get('http://localhost:8080/api/users/users/' + this.userEmail);
+  getCurrentUser(email: string) {
+    return this.http.get('http://localhost:8080/api/users/users/' + email);
   }
 
-  public submitTrashBags(trashBags: number): Observable<any> {
+  public submitTrashBags(
+    userEmail: string,
+    trashBags: number
+  ): Observable<any> {
     const data = {
-      email: this.userEmail,
-      trashBags: trashBags
+      email: userEmail,
+      trashBags: trashBags,
     };
 
-    return this.http.post('http://localhost:8080/api/users/submitTrash', data).pipe(
-      tap(() => {
-        this.toastrService.success('Trash bags submitted successfully', 'Success');
-      }),
-      catchError((error) => {
-        console.log("ERROR: ", error);
-        this.toastrService.warning();
-        return throwError(error);
-      })
-    );
+    return this.http
+      .post('http://localhost:8080/api/users/submitTrash', data)
+      .pipe(
+        tap(() => {
+          this.toastrService.success(
+            'Trash bags submitted successfully',
+            'Success'
+          );
+        }),
+        catchError((error) => {
+          console.log('ERROR: ', error);
+          this.toastrService.warning();
+          return throwError(error);
+        })
+      );
   }
 
   // Method for user login.
