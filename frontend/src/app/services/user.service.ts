@@ -41,7 +41,8 @@ export class UserService {
         this.toastrService.success('Trash bags submitted successfully', 'Success');
       }),
       catchError((error) => {
-        this.toastrService.warning("Error submitting trash bags", "Error");
+        console.log("ERROR: ", error);
+        this.toastrService.warning();
         return throwError(error);
       })
     );

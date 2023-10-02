@@ -3,7 +3,7 @@ import { Router } from 'express';
 import jwt from 'jsonwebtoken';
 import { User, UserModel } from '../models/user.model';
 import asyncHandler from 'express-async-handler';
-import { HTTP_OK_REQUEST, HTTP_BAD_REQUEST, HTTP_UNAUTHORIZED } from '../constants/http_status';
+import { HTTP_OK_REQUEST, HTTP_BAD_REQUEST, HTTP_UNAUTHORIZED, HTTP_CREATED_REQUEST } from '../constants/http_status';
 import bcrypt from 'bcryptjs';
 
 // Create an Express Router instance.
@@ -64,29 +64,29 @@ router.post("/register", asyncHandler(
     }
 ));
 
-//submit amount of trash bags collected.
+// Update the Express route handler to send a JSON response
 router.post("/submitTrash", asyncHandler(
     async (req, res) => {
         // Extract amount of trashbags and user.
         const { email, trashBags } = req.body;
 
-        //Find user in DB;
+        // Find user in DB;
         const user = await UserModel.findOne({ email });
 
         // Check if the user exists
         if (user) {
+            // Update trash bags for User in database
             const filter = { email: email };
             const update = { trashBags: user.trashBags + trashBags };
 
             // Update trash bags
             await UserModel.findOneAndUpdate(filter, update);
 
-            // Send a response that update was successful!
-            res.status(HTTP_OK_REQUEST).send("Trashbags have been updated!");
-            //Update trash bags for User in database
+            // Send a JSON response that update was successful
+            res.status(HTTP_OK_REQUEST).json({ message: 'Trash bags have been updated!' });
         } else {
-            // Send an HTTP 400 Bad Request response for invalid credentials.
-            res.status(HTTP_BAD_REQUEST).send("Something went wrong!");
+            // Send a JSON error response for invalid credentials
+            res.status(HTTP_BAD_REQUEST).json({ error: 'User not found or something went wrong!' });
         }
     }
 ));
