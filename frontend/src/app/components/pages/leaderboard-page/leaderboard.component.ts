@@ -10,22 +10,26 @@ import { LeaderboardService } from 'src/app/services/leaderboard.service';
   styleUrls: ['./leaderboard.component.css']
 })
 export class LeaderboardComponent implements OnInit {
-  leaderboard: User[] = [];
-  currentUser: User | null = null;
+  leaderboard: any;
+  currentUser: any;
 
   constructor(
     private leaderboardService: LeaderboardService,
     private userService: UserService,
-    private router: Router
   ) {}
 
   ngOnInit(): void {
-    const userJson = localStorage.getItem('User');
-    if (userJson) {
-      this.currentUser = JSON.parse(userJson);
-    }
+    this.userService.getCurrentUser().subscribe(
+      (data) => { // Specify IUser as the type here
+        this.currentUser = data;
+      },
+      (error: any) => {
+        console.error('Error fetching current user:', error);
+        // Handle the error appropriately (e.g., display an error message).
+      }
+    );
 
-    this.leaderboardService.getJSON().subscribe({
+    this.leaderboardService.getAllUsers().subscribe({
       next: (response: User[]) => {
         if (response) {
           // Sort the leaderboard array by user scores in descending order.

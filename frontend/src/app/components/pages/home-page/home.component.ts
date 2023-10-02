@@ -11,8 +11,6 @@ export class HomeComponent implements OnInit {
 
   currentUser: any; // Declare a variable to store the current user.
 
-  // currentUser: { name: string, trashBags: number, score: number } = { name: '', trashBags: 0, score: 0 };
-
   constructor(
     private userService: UserService, // Inject the UserService for user-related operations.
   ) { }
